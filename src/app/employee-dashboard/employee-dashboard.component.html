@@ -1,0 +1,81 @@
+<nav class="navbar navbar-light navbar bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;">Employee</h1>
+
+    <div class="d-flux">
+      <button (click)="clickAddEmployee()" class="btn btn-success" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+    </div>
+  </div>
+</nav>
+<table class="table table-striped  mt-5">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Employee Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of employeeData">
+      <td>{{data.id}}</td>
+      <td>{{data.firstName}}</td>
+      <td>{{data.lastName}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.mobile}}</td>
+      <td>{{data.salary}}</td>
+      <td>
+        <button  (click)="onEdit(data)" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+        <button  (click)="deleteEmployeeData(data)" class="btn btn-warning mx-2 btn-sm">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <fieldset>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">First Name</label>
+              <input type="text" formControlName="firstName" id="disabledTextInput" class="form-control" placeholder="First Name">
+            </div>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">Last Name</label>
+              <input type="text" formControlName="lastName" id="disabledTextInput" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">Email</label>
+              <input type="email" formControlName="email" id="disabledTextInput" class="form-control" placeholder="abc@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">Mobile</label>
+              <input type="text" formControlName="mobile" id="disabledTextInput" class="form-control" placeholder="0123456789">
+            </div>
+            <div class="mb-3">
+              <label for="disabledTextInput" class="form-label">Salary</label>
+              <input type="text" formControlName="salary" id="disabledTextInput" class="form-control" placeholder="Salary">
+            </div>
+
+          </fieldset>
+        </form>
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="cancle" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="showAdd" class="btn btn-primary" (click)="postEmployeeDetails()">Add</button>
+        <button type="button" *ngIf="showUpdate" class="btn btn-primary" (click)="updateEmployeeDetails()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

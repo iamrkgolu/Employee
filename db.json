@@ -1,0 +1,22 @@
+{
+  "employee": [
+    {
+      "id": 1,
+      "firstName": "Rahul",
+      "lastName": "Kumar",
+      "email": "iamrkgolu@gmail.com",
+      "mobile": "8210526146",
+      "salary": "50000"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
